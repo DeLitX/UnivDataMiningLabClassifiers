@@ -1,7 +1,6 @@
 package org.example
 
-import org.example.classifiers.Classifier
-import org.example.classifiers.OneRuleClassifier
+import org.example.classifiers.*
 import org.example.models.Attributes
 import org.example.models.ClassifiedInstance
 
@@ -62,8 +61,16 @@ fun main() {
     val dataToCheck = Attributes(1, 1, 1)
 
     val classifier: Classifier<Int, Int> = OneRuleClassifier()
+//    val classifier: Classifier<Int, Int> = NaiveBayesClassifier()
+//    val classifier: Classifier<Int, Int> = DecisionTreeClassifier()
+//    val classifier: Classifier<Int, Int> = KNearestNeighborsClassifier(k = 5)
 
+    classifier.insertClassifiedData(data1)
+    println("Prediction for test instance1: ${classifier.classify(dataToCheck)}")
+    classifier.insertClassifiedData(data2)
+    println("Prediction for test instance2: ${classifier.classify(dataToCheck)}")
+    classifier.insertClassifiedData(data3)
+    println("Prediction for test instance3: ${classifier.classify(dataToCheck)}")
     classifier.insertClassifiedData(data4)
-
-    println("Prediction for test instance: ${classifier.classify(dataToCheck)}")
+    println("Prediction for test instance4: ${classifier.classify(dataToCheck)}")
 }
